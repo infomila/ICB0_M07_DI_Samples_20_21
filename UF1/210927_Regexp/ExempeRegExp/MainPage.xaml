@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="ExempeRegExp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExempeRegExp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20">
+            <TextBlock Text="E-mail" Margin="5,10,10,10"></TextBlock>
+            <TextBox x:Name="txbEmail" Width="300" TextChanged="txbEmail_TextChanged"></TextBox>
+            <Button x:Name="btnGo" Content="Go"  Margin="10" IsEnabled="False" ></Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20">
+            <TextBlock Text="Telefon" Margin="5,10,10,10"></TextBlock>
+            <TextBox  x:Name="txbNumero" Width="300" TextChanged="txbNumero_TextChanged"></TextBox>
+            <Button  x:Name="btnGoNumero"  Content="Go"  Margin="10" IsEnabled="False" ></Button>
+        </StackPanel>
+    </StackPanel>
+</Page>
