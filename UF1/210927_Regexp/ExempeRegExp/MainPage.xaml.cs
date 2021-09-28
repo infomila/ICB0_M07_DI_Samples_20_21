@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -72,6 +72,33 @@ namespace ExempeRegExp
             btnGoNumero.IsEnabled = numeroValid;
             Color c = numeroValid ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0);
             txbNumero.Background = new SolidColorBrush(c);
+
+        }
+
+        private void txbSalari_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            decimal salari;
+
+            CultureInfo us = new CultureInfo("en-US");
+
+            Boolean salariValid =  Decimal.TryParse(txbSalari.Text,
+                NumberStyles.AllowDecimalPoint|NumberStyles.AllowThousands,
+                us, out salari);
+            if (salariValid)
+            {
+                salariValid = salari > 915;
+            }
+            //---------------------------------
+            btnGoSalari.IsEnabled = salariValid;
+            Color c = salariValid ? Color.FromArgb(255, 0, 255, 0) : Color.FromArgb(255, 255, 0, 0);
+            txbSalari.Background = new SolidColorBrush(c);
+            //---------------------------------------------
+            if (salariValid)
+            {
+                
+                String salariAmbFormat = salari.ToString("####,###,000.00" ,us);
+                txbSalari.Text = salariAmbFormat;
+            }
 
         }
     }
