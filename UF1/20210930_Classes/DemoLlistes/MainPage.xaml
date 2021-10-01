@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="DemoLlistes.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DemoLlistes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded"
+    >
+
+    <Grid Padding="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListBox SelectionChanged="lsbPersones_SelectionChanged" x:Name="lsbPersones" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ></ListBox>
+        <TextBlock  Grid.Row="1" Grid.Column="0" >Nom:</TextBlock>
+        <TextBox x:Name="txbNovaPersona" Grid.Row="1" Grid.Column="1" ></TextBox>
+        <TextBlock  Grid.Row="2" Grid.Column="0" >NIF:</TextBlock>
+        <TextBox x:Name="txbNIF"  Grid.Row="2" Grid.Column="1"></TextBox>
+        <TextBlock  Grid.Row="3" Grid.Column="0" >Data Naix.:</TextBlock>
+        <DatePicker x:Name="dtpDataNaix"  Grid.Row="3" Grid.Column="1" ></DatePicker>
+        <Button Click="Button_Click"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">Alta</Button>
+    </Grid>
+</Page>

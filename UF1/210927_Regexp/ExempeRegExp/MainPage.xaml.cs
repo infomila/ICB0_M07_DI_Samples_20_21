@@ -25,6 +25,8 @@ namespace ExempeRegExp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private const string FORMAT_DATA = "dd/MM/yyyy";
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -100,6 +102,58 @@ namespace ExempeRegExp
                 txbSalari.Text = salariAmbFormat;
             }
 
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            DateTime ara = DateTime.Now;
+            CultureInfo ciCat = new CultureInfo("eu-ES");
+            txbDiaHora.Text = ara.ToString("dd \\de MMMM \\de yyyy", ciCat);
+        }
+
+        private void txbAniversari_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            DateTime resultat;
+            bool dataCorrecta = DateTime.TryParseExact(
+                txbAniversari.Text, FORMAT_DATA, 
+                CultureInfo.CurrentCulture, 
+                DateTimeStyles.None, 
+                out resultat);
+            if (dataCorrecta)
+            {
+                dtpAniversari.Date = resultat;
+                cdpAniversari.Date = resultat;
+            }
+        }
+
+        private void dtpAniversari_DateChanged(object sender, DatePickerValueChangedEventArgs e)
+        {
+            cdpAniversari.Date = dtpAniversari.Date;
+            txbAniversari.Text = dtpAniversari.Date.ToString(FORMAT_DATA);
+
+            /*DateTime ara = DateTime.Now;
+            DateTime dema = ara.AddDays(1);
+            TimeSpan off =  dema - ara;
+            if (dema > ara)
+            {
+
+            }*/
+        }
+
+        private void cdpAniversari_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            if (cdpAniversari.Date.HasValue)
+            {
+                dtpAniversari.Date = cdpAniversari.Date.Value;
+                txbAniversari.Text = cdpAniversari.Date.Value.ToString(FORMAT_DATA);
+            }
+            string nom="Maria";
+            int a = 2;
+            switch (nom)
+            {
+                case "Maria": a++;break;
+                case "Pep": a--; break;
+            }
         }
     }
 }

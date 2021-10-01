@@ -6,7 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded"
+    >
     <StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20">
             <TextBlock Text="E-mail" Margin="5,10,10,10"></TextBlock>
@@ -22,6 +24,16 @@
             <TextBlock Text="Salari" Margin="5,10,10,10"></TextBlock>
             <TextBox  x:Name="txbSalari" Width="300" TextChanged="txbSalari_TextChanged"></TextBox>
             <Button  x:Name="btnGoSalari"  Content="Go"  Margin="10" IsEnabled="False" ></Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20">
+            <TextBlock Text="Dia i Hora actual" Margin="5,10,10,10"></TextBlock>
+            <TextBox  x:Name="txbDiaHora" Width="300" ></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20">
+            <TextBlock Text="Data de naixement" Margin="5,10,10,10"></TextBlock>
+            <TextBox  x:Name="txbAniversari" Width="300" TextChanged="txbAniversari_TextChanged"></TextBox>
+            <DatePicker x:Name="dtpAniversari" DateChanged="dtpAniversari_DateChanged" ></DatePicker>
+            <CalendarDatePicker x:Name="cdpAniversari" DateChanged="cdpAniversari_DateChanged" ></CalendarDatePicker>
         </StackPanel>
     </StackPanel>
 </Page>
