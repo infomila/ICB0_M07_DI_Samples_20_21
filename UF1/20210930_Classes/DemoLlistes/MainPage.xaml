@@ -24,11 +24,20 @@
         </Grid.RowDefinitions>
         <ListBox SelectionChanged="lsbPersones_SelectionChanged" x:Name="lsbPersones" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ></ListBox>
         <TextBlock  Grid.Row="1" Grid.Column="0" >Nom:</TextBlock>
-        <TextBox x:Name="txbNovaPersona" Grid.Row="1" Grid.Column="1" ></TextBox>
+        <TextBox x:Name="txbNovaPersona" Grid.Row="1" Grid.Column="1" KeyDown="txbNovaPersona_KeyDown" ></TextBox>
         <TextBlock  Grid.Row="2" Grid.Column="0" >NIF:</TextBlock>
-        <TextBox x:Name="txbNIF"  Grid.Row="2" Grid.Column="1"></TextBox>
+        <TextBox x:Name="txbNIF"  Grid.Row="2" Grid.Column="1" KeyDown="txbNIF_KeyDown" ></TextBox>
         <TextBlock  Grid.Row="3" Grid.Column="0" >Data Naix.:</TextBlock>
-        <DatePicker x:Name="dtpDataNaix"  Grid.Row="3" Grid.Column="1" ></DatePicker>
-        <Button Click="Button_Click"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">Alta</Button>
+        <DatePicker x:Name="dtpDataNaix"  Grid.Row="3" Grid.Column="1" KeyDown="dtpDataNaix_KeyDown" Tapped="dtpDataNaix_Tapped" ></DatePicker>
+
+        <StackPanel  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button x:Name="btnBaixa" Click="btnBaixa_Click"  Margin="5">Baixa</Button>
+            <Button x:Name="btnNou"   Click="btnNou_Click"  Margin="5">Nou</Button>
+            <Button x:Name="btnDesar" Click="btnDesar_Click"  Margin="5">Desar</Button>
+            <Button x:Name="btnCancel" Click="btnCancel_Click"  Margin="5">Cancel</Button>
+
+        </StackPanel>
+        
+        
     </Grid>
 </Page>
