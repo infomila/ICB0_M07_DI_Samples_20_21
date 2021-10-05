@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DemoLlistes
@@ -23,14 +24,17 @@ namespace DemoLlistes
             DataNaixement = dataNaixement;
         }
 
-        public string NIF1 { get => NIF; set { 
+        public string NIF1 { get => NIF; set {
+                if (validaNIF(value) == false) throw new Exception("NIF erroni");
                 NIF = value;
                 PropertyChanged?.Invoke(this,new PropertyChangedEventArgs("NIF1"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NomComplet"));
 
             }
         }
-        public string Nom { get => nom; set { nom = value;
+        public string Nom { get => nom; set { 
+                if (validaNom(value) == false) throw new Exception("Nom erroni");
+                nom = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Nom"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NomComplet"));
             } }
@@ -48,6 +52,21 @@ namespace DemoLlistes
         public override string ToString()
         {
             return NomComplet;
+        }
+
+
+
+        public static Boolean validaNIF(String NIF)
+        {
+            Regex regexp = new Regex("^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]$");
+            return NIF != null && regexp.IsMatch(NIF);
+        }
+
+        public static Boolean validaNom(String nom )
+        {
+            Regex regexp = new Regex("^([A-Z][a-záéíóúàèòïüÀ-ÿ\u00f1\u00d1çÇ]+[ ]?)+$");
+ 
+            return nom != null && regexp.IsMatch(nom);
         }
     }
 }

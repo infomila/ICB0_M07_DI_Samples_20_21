@@ -14,6 +14,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -24,11 +25,12 @@
         </Grid.RowDefinitions>
         <ListBox SelectionChanged="lsbPersones_SelectionChanged" x:Name="lsbPersones" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ></ListBox>
         <TextBlock  Grid.Row="1" Grid.Column="0" >Nom:</TextBlock>
-        <TextBox x:Name="txbNovaPersona" Grid.Row="1" Grid.Column="1" KeyDown="txbNovaPersona_KeyDown" ></TextBox>
+        <TextBlock x:Name="txbErNom"  Grid.Row="1" Grid.Column="2" Foreground="Red"  FontSize="8" Margin="2">Nom erroni.</TextBlock>
+        <TextBox x:Name="txbNovaPersona" Grid.Row="1" Grid.Column="1" KeyUp="txbNovaPersona_KeyDown" ></TextBox>
         <TextBlock  Grid.Row="2" Grid.Column="0" >NIF:</TextBlock>
-        <TextBox x:Name="txbNIF"  Grid.Row="2" Grid.Column="1" KeyDown="txbNIF_KeyDown" ></TextBox>
+        <TextBox x:Name="txbNIF"  Grid.Row="2" Grid.Column="1" KeyUp="txbNIF_KeyDown" ></TextBox>
         <TextBlock  Grid.Row="3" Grid.Column="0" >Data Naix.:</TextBlock>
-        <DatePicker x:Name="dtpDataNaix"  Grid.Row="3" Grid.Column="1" KeyDown="dtpDataNaix_KeyDown" Tapped="dtpDataNaix_Tapped" ></DatePicker>
+        <DatePicker x:Name="dtpDataNaix"  Grid.Row="3" Grid.Column="1" KeyUp="dtpDataNaix_KeyDown" Tapped="dtpDataNaix_Tapped" ></DatePicker>
 
         <StackPanel  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Button x:Name="btnBaixa" Click="btnBaixa_Click"  Margin="5">Baixa</Button>

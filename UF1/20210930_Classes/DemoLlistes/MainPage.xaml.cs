@@ -123,7 +123,7 @@ namespace DemoLlistes
 
         private void btnDesar_Click(object sender, RoutedEventArgs e)
         {
-            if (totsElsCampsSonValids())
+            if (verificaSiTotsElsCampsSonValids())
             {
                 if (estat == Estat.ALTA)
                 {
@@ -142,9 +142,18 @@ namespace DemoLlistes
         }
 
         // TODO: Nyapa temporal que cal arreglar
-        private bool totsElsCampsSonValids()
+        private bool verificaSiTotsElsCampsSonValids()
         {
-            return true;
+            Boolean NIFValid = Persona.validaNIF(txbNIF.Text);
+
+
+            Boolean NomValid = Persona.validaNom(txbNovaPersona.Text);
+            txbErNom.Visibility = NomValid ? Visibility.Collapsed : Visibility.Visible;
+
+
+            Boolean totValid = NIFValid && NomValid;
+            btnDesar.IsEnabled = totValid;
+            return totValid;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -161,6 +170,7 @@ namespace DemoLlistes
 
         private void checkCanvis()
         {
+            verificaSiTotsElsCampsSonValids();
             if (lsbPersones.SelectedItem != null)
             {
                 Persona actual = (Persona)lsbPersones.SelectedItem;
