@@ -14,7 +14,7 @@ namespace GestioDequips.Model
         {
             Id = id;
             Nom = nom;
-            Congnoms = congnoms;
+            Cognoms = congnoms;
             Nacionalitat = nacionalitat;
             UrlFoto = urlFoto;
         }
@@ -29,7 +29,7 @@ namespace GestioDequips.Model
             }
         }
         public string Nom { get => nom; set => nom = value; }
-        public string Congnoms { get => congnoms; set => congnoms = value; }
+        public string Cognoms { get => congnoms; set => congnoms = value; }
         public string Nacionalitat { get => nacionalitat; set => nacionalitat = value; }
         public string UrlFoto { get => urlFoto; set => urlFoto = value; }
 
