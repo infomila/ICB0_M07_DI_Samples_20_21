@@ -33,6 +33,7 @@ namespace GestioDequips
 
             lsvEquips.ItemsSource = Equip.getLlistaEquips();
 
+            uiJug.JugadorActual = new Jugador(4, "Anthony", "Edwards", "ESP", "https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4594268.png&h=80&w=110&scale=crop", 1);
         }
     }
 }

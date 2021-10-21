@@ -127,11 +127,8 @@
     <Compile Include="Model\OC.cs" />
     <Compile Include="Model\Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\UIBorderImage.xaml.cs">
-      <DependentUpon>UIBorderImage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UIEquipRow.xaml.cs">
-      <DependentUpon>UIEquipRow.xaml</DependentUpon>
+    <Compile Include="UIEquip.xaml.cs">
+      <DependentUpon>UIEquip.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UIJugadorRow.xaml.cs">
       <DependentUpon>UIJugadorRow.xaml</DependentUpon>
@@ -161,11 +158,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\UIBorderImage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UIEquipRow.xaml">
+    <Page Include="UIEquip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

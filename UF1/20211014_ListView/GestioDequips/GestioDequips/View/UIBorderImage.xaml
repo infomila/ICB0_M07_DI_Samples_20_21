@@ -1,0 +1,20 @@
+﻿<UserControl
+    x:Class="GestioDequips.View.UIBorderImage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GestioDequips.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    x:Name="ucBorderImage">
+    <!-- https://etselquemenges.cat/wp-content/media/2017/05/bosc.jpg-->
+    <Border Padding="20"  CornerRadius="20" 
+            BorderThickness="{Binding ElementName=ucBorderImage,Path=BorderThickness,FallbackValue=3}"
+            BorderBrush="{Binding ElementName=ucBorderImage,Path=BorderBrush}"
+            Background="{Binding ElementName=ucBorderImage,Path=Background, FallbackValue='Red'}">
+        <Image x:Name="image" Source="{Binding ElementName=ucBorderImage,Path=Source, FallbackValue='https://etselquemenges.cat/wp-content/media/2017/05/bosc.jpg'}">
+        </Image>
+    </Border>
+</UserControl>
