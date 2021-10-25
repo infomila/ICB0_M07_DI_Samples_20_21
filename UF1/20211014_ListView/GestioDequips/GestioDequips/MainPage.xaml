@@ -10,7 +10,32 @@
     Loaded="Page_Loaded">
 
     <Grid>
-        <ListView x:Name="lsvEquips">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Padding="20" BorderBrush="Black" BorderThickness="1"
+              Background="#ccc">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Arial" FontSize="40" TextAlignment="Center">Filtre</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" TextAlignment="Right" Padding="10">Conferència:</TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12"  TextAlignment="Right"  Padding="10">Text lliure:</TextBlock>
+            <ComboBox  x:Name="cboConferencies" Grid.Row="1" Grid.Column="1" ></ComboBox>
+            <TextBox x:Name="txbLliure" Grid.Row="2" Grid.Column="1"></TextBox>
+            <Button x:Name="btnClear" Grid.Row="1" Grid.Column="2" Margin="10">Clear</Button>
+            <Button x:Name="btnFilter" Grid.Row="2" Grid.Column="2"  Margin="10" Click="btnFilter_Click">Filter</Button>
+        </Grid>
+
+        <ListView x:Name="lsvEquips"  Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <view:UIEquipRow UnEquip="{Binding}"></view:UIEquipRow>
