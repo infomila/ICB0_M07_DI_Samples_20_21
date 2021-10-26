@@ -19,9 +19,9 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox Background="Black" Foreground="Red" Text="0" Grid.Row="0" Grid.Column="0" Padding="10"></TextBox>
+        <TextBox Background="Black" FontSize="50"  FontFamily="DSEG7 Modern" Foreground="Red" Text="0" Grid.Row="0" Grid.Column="0" Padding="10"></TextBox>
         <TextBlock FontSize="50"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">😊</TextBlock>
-        <TextBox Background="Black" Foreground="Red" Text="0" Grid.Row="0" Grid.Column="2" Padding="10"></TextBox>
+        <TextBox Background="Black" FontSize="50" FontFamily="DSEG7 Modern" Foreground="Red" Text="0" Grid.Row="0" Grid.Column="2" Padding="10"></TextBox>
         
         <!-- ****************************************** -->
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center"
