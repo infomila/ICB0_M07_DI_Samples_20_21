@@ -134,7 +134,6 @@ namespace Buscamines
                     botoTap.Background = new SolidColorBrush(Colors.LightGray);
                     botoTap.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
                     botoTap.BorderThickness = new Thickness(1);
-                    //botoTap.Background = new SolidColorBrush(Color.FromArgb(255, 200, 200, 200));
 
                     botoTap.Tapped += BotoTap_Tapped;
 
