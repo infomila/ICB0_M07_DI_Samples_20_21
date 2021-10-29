@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Buscamines.View;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -117,6 +118,18 @@ namespace Buscamines
             {
                 for (int c = 0; c < columnes; c++)
                 {
+
+                    UICasella casella = new UICasella();
+                    casella.Valor = tauler[c, f];
+                    casella.Fila = f;
+                    casella.Columna = c;
+                    Grid.SetColumn(casella, c);
+                    Grid.SetRow(casella, f);
+                    grdTauler.Children.Add(casella);
+                    casella.Destapa += Casella_Destapa;
+                    casella.GameOver += Casella_GameOverAsync;
+
+                    /*
                     Border border = new Border();
                     border.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 0,0,0));
                     border.BorderThickness = new Thickness(1);
@@ -155,10 +168,7 @@ namespace Buscamines
                     banderola.Text = "";
                     botoTap.Child = banderola;
 
-
-                    /*Image im = new Image();
-                    im.Source = new BitmapImage( new Uri(this.BaseUri, "Assets/quad.png" ));
-                    botoTap.Child = im;*/
+         
 
                      Grid.SetColumn(botoTap, c);
                     Grid.SetRow(botoTap, f);
@@ -167,27 +177,40 @@ namespace Buscamines
                     Grid.SetColumn(border, c);
                     Grid.SetRow(border, f);
                     grdTauler.Children.Add(border);
-                    grdTauler.Children.Add(botoTap);
+                    grdTauler.Children.Add(botoTap);*/
                 }
             }
  
         }
 
-        private void BotoTap_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        private async void Casella_GameOverAsync(object sender, EventArgs e)
         {
-            Border b = (Border)sender;
-            TextBlock tb = (TextBlock) b.Child;
-            Boolean teBanderola = (bool)b.Tag;
-            if (teBanderola)
-            {
-                tb.Text = "";
-            } else
-            {
-                tb.Text = "🚩";
-            }
-            b.Tag = !teBanderola;
+            await gameOverAsync();
         }
 
+        private void Casella_Destapa(object sender, EventArgs e)
+        {
+            UICasella c = (UICasella)sender;
+            destapa(c.Fila, c.Columna);
+        }
+
+        /*
+private void BotoTap_RightTapped(object sender, RightTappedRoutedEventArgs e)
+{
+   Border b = (Border)sender;
+   TextBlock tb = (TextBlock) b.Child;
+   Boolean teBanderola = (bool)b.Tag;
+   if (teBanderola)
+   {
+       tb.Text = "";
+   } else
+   {
+       tb.Text = "🚩";
+   }
+   b.Tag = !teBanderola;
+}
+*/
+        /*
         private void BotoTap_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Border b = (Border)sender;
@@ -203,47 +226,41 @@ namespace Buscamines
             }
             
         }
-
+        */
 
         private void destapa(int f, int c)
         {
-            int index = 2 * (f * columnes + c) + 1;
-            Border t = (Border)grdTauler.Children[index];
-            
+            int index =  (f * columnes + c) ;
+            UICasella casella = (UICasella)grdTauler.Children[index];
+
             //tallem la recursivitat evitant que es destapin coses
             // que estan destapades.
-            if (t.Visibility == Visibility.Collapsed) return;
+            if (casella.Destapada) return;
 
-            
-
-            if (this.tauler[c,f]==MINA)
+            //casella.Destapada = true;
+    
+            casellesDestapades++;
+            if(files*columnes-numMines==casellesDestapades)
             {
-               gameOverAsync();
-            } else  // número o buida
+                youWinAsync();
+            }
+            else if (this.tauler[c, f] == 0)
             {
-                t.Visibility = Visibility.Collapsed;
-                casellesDestapades++;
-                if(files*columnes-numMines==casellesDestapades)
+                // recorregut de les veines
+                for (int i = 0; i < 8; i++)
                 {
-                    youWinAsync();
-                }
-                else if (this.tauler[c, f] == 0)
-                {
-                    // recorregut de les veines
-                    for (int i = 0; i < 8; i++)
+                    int ff = f + veines[i, 1];
+                    int cc = c + veines[i, 0];
+                    if (
+                        between(ff, 0, files) &&
+                        between(cc, 0, columnes) 
+                        )
                     {
-                        int ff = f + veines[i, 1];
-                        int cc = c + veines[i, 0];
-                        if (
-                            between(ff, 0, files) &&
-                            between(cc, 0, columnes) 
-                         )
-                        {
-                            destapa(ff, cc);                         
-                        }
+                        destapa(ff, cc);                         
                     }
                 }
             }
+            
         }
 
         private async System.Threading.Tasks.Task youWinAsync()
