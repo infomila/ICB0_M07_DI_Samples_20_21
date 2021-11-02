@@ -107,25 +107,44 @@ namespace Buscamines.View
 
         public bool Destapada
         {
-            get { return brdTop.Visibility == Visibility.Collapsed; }
+            get { return (bool)GetValue(DestapadaProperty); }
+            set { SetValue(DestapadaProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Destapada.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DestapadaProperty =
-            DependencyProperty.Register("Destapada", typeof(bool), typeof(UICasella), new PropertyMetadata(false));
+            DependencyProperty.Register("Destapada", typeof(bool), typeof(UICasella), new PropertyMetadata(false, DestapadaChangedCallback_static));
 
+        private static void DestapadaChangedCallback_static(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UICasella uc = (UICasella)d;
+            uc.DestapadaChangedCallback();
+        }
+
+        private void DestapadaChangedCallback()
+        {
+            // això és cridat quan la propietat "Destapada" canvia.
+            if(this.Destapada)
+            {
+                brdTop.Visibility = Visibility.Collapsed;
+                if (Valor == MINA)
+                {
+                    GameOver?.Invoke(this, new EventArgs());
+                }
+                else
+                {
+                    Destapa?.Invoke(this, new EventArgs());
+                }
+            }
+        }
+
+        
         private void brdTop_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (Marcada) return;
 
-            brdTop.Visibility = Visibility.Collapsed;
-            if (Valor == MINA)
-            {
-                GameOver?.Invoke(this, new EventArgs());
-            } else
-            {
-                Destapa?.Invoke(this, new EventArgs());
-            }
+            this.Destapada = true;
+
         }
 
         private void brdTop_RightTapped(object sender, RightTappedRoutedEventArgs e)
