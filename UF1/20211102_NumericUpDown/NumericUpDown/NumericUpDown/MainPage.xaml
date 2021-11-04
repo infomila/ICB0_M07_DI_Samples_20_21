@@ -5,10 +5,37 @@
     xmlns:local="using:NumericUpDown"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="using:NumericUpDown.View"
     mc:Ignorable="d"
+    x:Name="mainPage"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-    </Grid>
+    <StackPanel Orientation="Vertical">
+        <view:UINumericUpDown 
+            x:Name="nud"
+            HorizontalAlignment="Center"
+                              VerticalAlignment="Center" 
+                              Valor="3" 
+                              Max="100" Min="0"
+                              ValorChanged="UINumericUpDown_ValorChanged"
+                              Margin="0,0,0,0"  ></view:UINumericUpDown>
+        <TextBlock x:Name="txbValor">HOLA</TextBlock>
+        <TextBlock x:Name="txbValor2" Text="{Binding ElementName=nud,Path=Valor}"></TextBlock>
+        <view:UINumericUpDown 
+            x:Name="nud1"
+            HorizontalAlignment="Center"
+                              VerticalAlignment="Center" 
+                              Valor="3" 
+                              Max="100" Min="0"
+                              ValorChanged="UINumericUpDown_ValorChanged"
+                              Margin="0,0,0,0"  ></view:UINumericUpDown>
+        <view:UINumericUpDown 
+            x:Name="nud2"
+            HorizontalAlignment="Center"
+                              VerticalAlignment="Center" 
+                              Valor="3" 
+                              Max="100" Min="0"
+                              ValorChanged="UINumericUpDown_ValorChanged"
+                              Margin="0,0,0,0"  ></view:UINumericUpDown>
+    </StackPanel>
 </Page>

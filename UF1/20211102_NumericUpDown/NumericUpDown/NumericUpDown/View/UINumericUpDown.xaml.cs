@@ -40,9 +40,26 @@ namespace NumericUpDown.View
 
         // Using a DependencyProperty as the backing store for Valor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValorProperty =
-            DependencyProperty.Register("Valor", typeof(int), typeof(UINumericUpDown), new PropertyMetadata(0));
+            DependencyProperty.Register("Valor", typeof(int), typeof(UINumericUpDown), 
+                new PropertyMetadata(0, ValorChanged_static));
 
+        private static void ValorChanged_static(DependencyObject d, 
+            DependencyPropertyChangedEventArgs e)
+        {
+            UINumericUpDown nupd = (UINumericUpDown)d;
+            nupd.PropValorChanged(e);
+        }
 
+        private void PropValorChanged(DependencyPropertyChangedEventArgs e)
+        {
+            // això es dispara quan Valor canvia
+            if(Valor>Max || Valor<Min)
+            {
+                Valor = (int)e.OldValue;
+            }
+            ValorChanged?.Invoke(this, new EventArgs());
+            txbNumero.Text = "" + Valor;
+        }
 
         public int Max
         {
@@ -78,7 +95,35 @@ namespace NumericUpDown.View
         public static readonly DependencyProperty StepProperty =
             DependencyProperty.Register("Step", typeof(int), typeof(UINumericUpDown), new PropertyMetadata(1));
 
+        private void btnUp_Click(object sender, RoutedEventArgs e)
+        {
+            //txbNumero.Text = ""+ Int32.Parse(txbNumero.Text) + this.Step;
+            this.Valor += this.Step;
+        }
 
+        private void btnDown_Click(object sender, RoutedEventArgs e)
+        {
+            this.Valor -= this.Step;
+        }
 
+        private void txbNumero_BeforeTextChanging(TextBox sender, 
+            TextBoxBeforeTextChangingEventArgs args)
+        {
+            args.Cancel = args.NewText.Any(c => (!char.IsDigit(c) && c!='-' ));
+        }
+
+        private void txbNumero_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int numero;
+            bool esNumero = Int32.TryParse( txbNumero.Text, out numero) ;
+            if (esNumero)
+            {
+                Valor = numero;
+            } else
+            {
+                Valor = Min;
+                txbNumero.Text = ""+Valor;
+            }
+        }
     }
 }

@@ -6,12 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="100"
-    d:DesignWidth="200">
+    d:DesignHeight="500"
+    d:DesignWidth="500">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -20,15 +20,27 @@
         </Grid.RowDefinitions>
         <!-- ********************************** -->
         <TextBox x:Name="txbNumero" Grid.Column="0"
-                 Grid.Row="0" Grid.RowSpan="2"></TextBox>
+                 Width="100"
+                 VerticalAlignment="Stretch"                 
+                 VerticalContentAlignment="Center"
+                 Grid.Row="0" Grid.RowSpan="2"
+                 BeforeTextChanging="txbNumero_BeforeTextChanging"
+                 TextChanged="txbNumero_TextChanged"
+                 ></TextBox>
         <Button 
             x:Name="btnUp"
-            Margin="10"
+            Margin="0"
+            Padding="0"
+            Height="20"
+            Click="btnUp_Click"
             Grid.Column="1"
-                 Grid.Row="0">▲</Button>
+            Grid.Row="0">▲</Button>
         <Button 
             x:Name="btnDown"
-            Margin="10"
+            Margin="0"
+            Padding="0"
+            Height="20"
+            Click="btnDown_Click"
             Grid.Column="1"
             Grid.Row="1"   
                 >▼</Button>

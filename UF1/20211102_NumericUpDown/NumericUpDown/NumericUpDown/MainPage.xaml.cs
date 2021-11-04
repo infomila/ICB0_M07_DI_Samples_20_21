@@ -26,5 +26,13 @@ namespace NumericUpDown
         {
             this.InitializeComponent();
         }
+
+        private void UINumericUpDown_ValorChanged(object sender, EventArgs e)
+        {
+            if (txbValor != null)
+            {
+                txbValor.Text = nud.Valor + "";
+            }
+        }
     }
 }
