@@ -5,10 +5,15 @@
     xmlns:local="using:ExamenTest"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="using:ExamenTest.View"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
 
-    <Grid>
-
-    </Grid>
+    <StackPanel Orientation="Horizontal">
+        <Button x:Name="btnLeft" Click="btnLeft_Click"> ◀</Button>
+        <view:UIPregunta x:Name="uiPregunta"></view:UIPregunta>
+        <Button x:Name="btnRight" Click="btnRight_Click">▶</Button>
+        <TextBlock x:Name="txbNota" FontSize="300" VerticalAlignment="Top" Foreground="Lime">∞</TextBlock>
+    </StackPanel>
 </Page>

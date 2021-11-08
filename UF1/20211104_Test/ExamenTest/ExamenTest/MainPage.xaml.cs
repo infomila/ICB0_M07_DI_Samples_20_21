@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExamenTest.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,46 @@ namespace ExamenTest
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        private int indexPreguntaSeleccionada=0;
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            mostrarPreguntaSeleccionada();
+            uiPregunta.PreguntaResposta += UiPregunta_PreguntaResposta;
+        }
+
+        private void UiPregunta_PreguntaResposta(object sender, EventArgs e)
+        {
+            //------
+            float puntuacio = 0;
+            foreach(Pregunta p in Pregunta.getPreguntes())
+            {
+                puntuacio += p.getPuntuacio();
+            }
+            txbNota.Text = "" + puntuacio;
+        }
+
+        private void mostrarPreguntaSeleccionada()
+        {
+            uiPregunta.LaPregunta = Pregunta.getPreguntes()[indexPreguntaSeleccionada];
+        }
+
+        private void btnLeft_Click(object sender, RoutedEventArgs e)
+        {
+            indexPreguntaSeleccionada--;
+            if (indexPreguntaSeleccionada < 0) indexPreguntaSeleccionada = Pregunta.getPreguntes().Count-1;
+            mostrarPreguntaSeleccionada();
+        }
+
+        private void btnRight_Click(object sender, RoutedEventArgs e)
+        {
+            indexPreguntaSeleccionada = (indexPreguntaSeleccionada+1)% Pregunta.getPreguntes().Count;
+            mostrarPreguntaSeleccionada();
         }
     }
 }
