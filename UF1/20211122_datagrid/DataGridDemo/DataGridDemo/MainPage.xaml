@@ -6,16 +6,35 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:c="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:view="using:DataGridDemo.View"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     Loaded="Page_Loaded">
+    <Page.Resources>
+        <view:Sex2Icon x:Key="sex2iconkey"></view:Sex2Icon>
+    </Page.Resources>
 
     <Grid>
         <c:DataGrid x:Name="dtgHeroes"
                            AutoGenerateColumns="False"
                             IsReadOnly="True"
                             GridLinesVisibility="All"
+                            AlternatingRowBackground="LightGray"                        
                            >
+            <c:DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"  Source="{Binding UrlPhoto}"></Image>
+                        <TextBlock Grid.Column="1" Text="{Binding Desc}" Padding="10"></TextBlock>
+                        <ListBox Grid.Column="2" ItemsSource="{Binding AlterEgos}" ></ListBox>
+                    </Grid>
+                </DataTemplate>
+            </c:DataGrid.RowDetailsTemplate>
             <c:DataGrid.Columns>
                 <c:DataGridTextColumn
                     Header="Name"
@@ -49,7 +68,44 @@
                         </DataTemplate>
                     </c:DataGridTemplateColumn.CellTemplate>
                 </c:DataGridTemplateColumn>
-                
+                <!--*************************************************-->
+                <c:DataGridTemplateColumn Header="Team">
+                    <c:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" BorderBrush="Bisque">
+                                <Image Source="{Binding Team.UrlPhoto}"
+                                       Width="80"
+                                       ></Image>
+                            </Border>
+                        </DataTemplate>
+                    </c:DataGridTemplateColumn.CellTemplate>
+                </c:DataGridTemplateColumn>
+                <!--*************************************************-->
+                <!--*************************************************-->
+                <c:DataGridTemplateColumn Header="Team Combo">
+                    <c:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox
+                                ItemsSource="{Binding Teams}"
+                                SelectedItem="{Binding Team}"
+                                DisplayMemberPath="Name"
+                                ></ComboBox>
+                        </DataTemplate>
+                    </c:DataGridTemplateColumn.CellTemplate>
+                </c:DataGridTemplateColumn>
+                <!-- ******************************* -->
+                <c:DataGridCheckBoxColumn Header="Es Home"
+                                          Width="SizeToHeader"
+                                          Binding="{Binding Sex}">
+                    
+                </c:DataGridCheckBoxColumn>
+
+                <c:DataGridTextColumn
+                    Header="Sexe"
+                    Binding="{Binding Converter={StaticResource sex2iconkey}, Path=Sex}"
+                    Width="SizeToCells"
+                    FontSize="20"
+                    ></c:DataGridTextColumn>
             </c:DataGrid.Columns>
         </c:DataGrid>
     </Grid>

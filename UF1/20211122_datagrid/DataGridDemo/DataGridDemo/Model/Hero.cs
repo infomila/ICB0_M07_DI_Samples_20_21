@@ -67,6 +67,13 @@ namespace DataGridDemo.Model
                 return new List<string>() {"Paco", "The butano man", "XXXX" };
             }
         }
+        public string SexIcon
+        {
+            get
+            {
+                return Sex ? "♂" : "♀";
+            }
+        }
 
         public bool EsDona
         {

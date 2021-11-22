@@ -101,6 +101,7 @@
     <Compile Include="Model\Hero.cs" />
     <Compile Include="Model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Sex2Icon.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -113,7 +114,7 @@
     <Content Include="Assets\images\beast.png" />
     <Content Include="Assets\images\blackp.png" />
     <Content Include="Assets\images\bw.png" />
-    <Content Include="Assets\images\c8aae7ccf04ffd6914be5653bcb28fea.jpg" />
+    <Content Include="Assets\images\avengers.jpg" />
     <Content Include="Assets\images\cap.png" />
     <Content Include="Assets\images\coloso.png" />
     <Content Include="Assets\images\doc.png" />
@@ -123,7 +124,7 @@
     <Content Include="Assets\images\storm.png" />
     <Content Include="Assets\images\thor.png" />
     <Content Include="Assets\images\vision.png" />
-    <Content Include="Assets\images\x-logo-men-6.jpg" />
+    <Content Include="Assets\images\x-logo.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

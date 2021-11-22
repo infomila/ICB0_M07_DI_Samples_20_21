@@ -15,7 +15,7 @@ namespace DataGridDemo.Model
             if (teams == null)
             {
                 teams = new List<Team>();
-                teams.Add(new Team("Avengers", "ms-appx:///Assets/images/avengers_logo.jpg"));
+                teams.Add(new Team("Avengers", "ms-appx:///Assets/images/avengers.jpg"));
                 teams.Add(new Team("X-Men", "ms-appx:///Assets/images/x-logo.jpg"));
                 teams.Add(GetEmptyTeam());
             }
