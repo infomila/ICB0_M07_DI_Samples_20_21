@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="NBAApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NBAApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
+
+    <StackPanel>
+        <Button x:Name="btnGo" Click="btnGo_Click"></Button>
+
+        <TextBlock x:Name="txbTotal"></TextBlock>
+        <ListView x:Name="lsvJugadors">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding firstName}"></TextBlock>
+                        <TextBlock Text="{Binding lastName}"></TextBlock>
+                        <TextBlock Text="{Binding pos}"></TextBlock>
+                        <TextBlock Text="{Binding heightMeters}"></TextBlock>
+                        <TextBlock Text="{Binding weightKilograms}"></TextBlock>
+                        <TextBlock Text="{Binding country}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>
+</Page>

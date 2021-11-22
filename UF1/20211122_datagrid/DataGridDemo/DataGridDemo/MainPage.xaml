@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="DataGridDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DataGridDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
+
+    <Grid>
+        <c:DataGrid x:Name="dtgHeroes"
+                           AutoGenerateColumns="False"
+                            IsReadOnly="True"
+                            GridLinesVisibility="All"
+                           >
+            <c:DataGrid.Columns>
+                <c:DataGridTextColumn
+                    Header="Name"
+                    Binding="{Binding Name}"
+                    Width="SizeToCells"
+                    FontSize="20"
+                    ></c:DataGridTextColumn>
+                <!--*************************************************-->
+                <c:DataGridTextColumn
+                    Header="Desc."
+                    Binding="{Binding Desc}"
+                    Width="320"
+                    FontSize="10"
+                    FontFamily="Comic Sans MS"
+                    >
+                    <c:DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </c:DataGridTextColumn.ElementStyle>
+                </c:DataGridTextColumn>
+                <!--*************************************************-->
+                <c:DataGridTemplateColumn Header="Photo">
+                    <c:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" BorderBrush="Bisque">
+                                <Image Source="{Binding UrlPhoto}"
+                                       Width="80"
+                                       ></Image>
+                            </Border>
+                        </DataTemplate>
+                    </c:DataGridTemplateColumn.CellTemplate>
+                </c:DataGridTemplateColumn>
+                
+            </c:DataGrid.Columns>
+        </c:DataGrid>
+    </Grid>
+</Page>
