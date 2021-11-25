@@ -1,4 +1,5 @@
 ﻿using DataGridDemo.Model;
+using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,7 +33,7 @@ namespace DataGridDemo
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // dtgHeroes.ItemsSource = Hero.GetListOfHeroes();
-            agrupacio();
+            agrupacio(1,true);
         }
         public class GroupInfoCollection<T> : ObservableCollection<T>
         {
@@ -43,15 +44,55 @@ namespace DataGridDemo
                 return (IEnumerator<T>)base.GetEnumerator();
             }
         }
-        private void agrupacio()
+ 
+
+        private void agrupacio(int camp, Boolean asc)
         {
             // Create grouping for collection
             ObservableCollection<GroupInfoCollection<Hero>> heroes = new ObservableCollection<GroupInfoCollection<Hero>>();
 
-            //Implement grouping through LINQ queries
             var query = from item in Hero.GetListOfHeroes()
+                        orderby item.Team.Name, item.Name
                         group item by item.Team.Name into g
                         select new { GroupName = g.Key, Items = g };
+
+            if (camp == 1)
+            {
+                if (asc)
+                {
+                    //Implement grouping through LINQ queries
+                    query = from item in Hero.GetListOfHeroes()
+                            orderby item.Team.Name, item.Name ascending
+                            group item by item.Team.Name into g
+                            select new { GroupName = g.Key, Items = g };
+                }else
+                {
+                    query = from item in Hero.GetListOfHeroes()
+                            orderby item.Team.Name, item.Name descending
+                            group item by item.Team.Name into g
+                            select new { GroupName = g.Key, Items = g };
+                }
+            } else
+            {
+                if (asc)
+                {
+                    //Implement grouping through LINQ queries
+                    query = from item in Hero.GetListOfHeroes()
+                            orderby item.Team.Name, item.Sex ascending
+                            group item by item.Team.Name into g
+                            select new { GroupName = g.Key, Items = g };
+                }
+                else
+                {
+                    query = from item in Hero.GetListOfHeroes()
+                            orderby item.Team.Name, item.Sex descending
+                            group item by item.Team.Name into g
+                            select new { GroupName = g.Key, Items = g };
+                }
+            }      
+       
+          
+
 
             //Populate Mountains grouped collection with results of the query
             foreach (var g in query)
@@ -70,6 +111,36 @@ namespace DataGridDemo
             groupedItems.Source = heroes;
             //Set the datagrid's ItemsSource to grouped collection view source
             dtgHeroes.ItemsSource = groupedItems.View;
+        }
+
+
+
+
+        private void dg_loadingRowGroup(object sender, DataGridRowGroupHeaderEventArgs e)
+        {
+            ICollectionViewGroup group = e.RowGroupHeader.CollectionViewGroup;
+            Hero item = group.GroupItems[0] as Hero;
+            e.RowGroupHeader.PropertyValue = item.Team.Name;
+        }
+
+        private void dtgHeroes_Sorting(object sender, DataGridColumnEventArgs e)
+        {
+            int camp = 0;
+            if (e.Column.Tag.Equals("Name"))
+            {
+                camp = 1;
+            }
+            bool asc = (e.Column.SortDirection == null || e.Column.SortDirection == DataGridSortDirection.Descending);
+            
+            agrupacio(camp,  asc);
+            if (asc)
+            {
+                e.Column.SortDirection = DataGridSortDirection.Ascending;
+            } else
+            {
+                e.Column.SortDirection = DataGridSortDirection.Descending;
+            }
+
         }
     }
 }
