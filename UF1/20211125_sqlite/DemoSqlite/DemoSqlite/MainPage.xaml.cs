@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DBLib.db;
+using DBLib.model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,11 @@ namespace DemoSqlite
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            DeptDB.GetLlistaDepartaments();
         }
     }
 }

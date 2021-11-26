@@ -154,6 +154,15 @@
       <Version>6.2.10</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\db\empresa.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBLib\DBLib.csproj">
+      <Project>{45280efe-9186-4cb9-a55a-d6b845638a84}</Project>
+      <Name>DBLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

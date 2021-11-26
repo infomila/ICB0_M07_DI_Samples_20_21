@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Common;
 using System.Text;
 
 namespace DBLib.db
@@ -16,7 +17,7 @@ namespace DBLib.db
             // TACO SQL
             using(SQLiteDBContext context = new SQLiteDBContext())
             {
-
+               
             }
 
             return departaments;
