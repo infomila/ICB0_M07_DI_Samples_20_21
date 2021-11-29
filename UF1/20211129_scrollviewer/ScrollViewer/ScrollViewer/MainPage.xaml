@@ -30,7 +30,7 @@
                     RelativePanel.AlignVerticalCenterWithPanel="True"></Button>
         </RelativePanel>
     </ScrollViewer>
-        <Rectangle Width="300" Height="300" Fill="Aquamarine"
+        <Rectangle Width="300" Height="300" Fill="#667FFFD4"
             RelativePanel.AlignBottomWithPanel="True"
                    RelativePanel.AlignHorizontalCenterWithPanel="True"></Rectangle>
     </RelativePanel>
