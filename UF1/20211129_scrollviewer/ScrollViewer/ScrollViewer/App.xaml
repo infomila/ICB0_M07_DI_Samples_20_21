@@ -1,7 +1,7 @@
 ﻿<Application
-    x:Class="WebService.App"
+    x:Class="ScrollViewer.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WebService">
+    xmlns:local="using:ScrollViewer">
 
 </Application>

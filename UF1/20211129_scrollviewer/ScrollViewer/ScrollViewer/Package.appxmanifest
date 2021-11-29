@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="7337292d-69f2-4d3e-9926-f73487864904"
+    Name="789d52b6-6652-4d99-b9e8-1b812e0a4233"
     Publisher="CN=Usuari"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="7337292d-69f2-4d3e-9926-f73487864904" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="789d52b6-6652-4d99-b9e8-1b812e0a4233" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>WebService</DisplayName>
+    <DisplayName>ScrollViewer</DisplayName>
     <PublisherDisplayName>Usuari</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="WebService.App">
+      EntryPoint="ScrollViewer.App">
       <uap:VisualElements
-        DisplayName="WebService"
+        DisplayName="ScrollViewer"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="WebService"
+        Description="ScrollViewer"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

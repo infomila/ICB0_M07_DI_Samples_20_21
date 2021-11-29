@@ -1,9 +1,5 @@
-﻿
-using DBLib.db;
-using DBLib.model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -19,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0xc0a
 
-namespace DemoSqlite
+namespace ScrollViewer
 {
     /// <summary>
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -31,22 +27,12 @@ namespace DemoSqlite
             this.InitializeComponent();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void ScrollViewer_Loaded(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Dept> departaments = 
-                DeptDB.GetLlistaDepartaments();
+            int offsetX = (int)( 0.5 * (grdTauler.Width - myScrollViewer.ActualWidth) );
+            int offsetY = (int)( 0.5 * (grdTauler.Width - myScrollViewer.ActualHeight) );
+            myScrollViewer.ChangeView(offsetX, offsetY, 1.0f);
 
-            dgrDept.ItemsSource = departaments;
-
-            txbNumDept.Text = DeptDB.GetNumeroDepartaments()+"";
-        }
-
-        private void txbFiltreDnom_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            ObservableCollection<Dept> departaments =
-                DeptDB.GetLlistaDepartaments(txbFiltreDnom.Text);
-
-            dgrDept.ItemsSource = departaments;
         }
     }
 }

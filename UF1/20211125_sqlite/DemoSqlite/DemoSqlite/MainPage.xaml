@@ -4,12 +4,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:DemoSqlite"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     Loaded="Page_Loaded">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Padding="10">
+            <TextBlock>Nom:</TextBlock>
+            <TextBox x:Name="txbFiltreDnom" Width="300" Margin="10,0,0,0" TextChanged="txbFiltreDnom_TextChanged" ></TextBox>
+        </StackPanel>
+        <TextBlock x:Name="txbNumDept" Grid.Column="1" Grid.Row="0"></TextBlock>
 
+        <controls:DataGrid x:Name="dgrDept"
+                           Grid.Row="1" Grid.Column="0"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch">
+
+        </controls:DataGrid>
     </Grid>
 </Page>
