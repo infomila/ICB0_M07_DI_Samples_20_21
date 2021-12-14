@@ -1,4 +1,4 @@
-﻿using DBLib.db;
+﻿using BDLib.db;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.Common;
 using System.Text;
 
-namespace DBLib
+namespace BDLib
 {
     public class DeptDB
     {
