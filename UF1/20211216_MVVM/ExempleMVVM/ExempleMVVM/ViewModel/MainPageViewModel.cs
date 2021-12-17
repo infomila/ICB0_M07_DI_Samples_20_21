@@ -1,4 +1,5 @@
 ﻿using ExempleMVVM.Model;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,45 +25,57 @@ namespace ExempleMVVM.ViewModel
             this.laPersonaAEditar = laPersonaAEditar;
             //----------------------------------------------
             LaPersona = new MainPageViewModel_Persona();
-            LaPersona.Nom = laPersonaAEditar.Nom;
-            LaPersona.Sexe = laPersonaAEditar.Sexe;
-            LaPersona.Edat =  laPersonaAEditar.Edat+"";
-            LaPersona.Actiu = laPersonaAEditar.Actiu;
-            LaPersona.ImageURL = laPersonaAEditar.ImageURL;
+            carregarPersona(laPersonaAEditar);
+            LaPersona.PropertyChanged += LaPersona_PropertyChanged;
             //--------------------------------------------------
 
-            LaPersona.PropertyChanged += LaPersona_PropertyChanged;
 
+            HiHaCanvis = false;
+
+        }
+
+        private void carregarPersona(Persona laPersonaAEditar)
+        {
+            
+            LaPersona.Nom = laPersonaAEditar.Nom;
+            LaPersona.Sexe = laPersonaAEditar.Sexe;
+            LaPersona.Edat = laPersonaAEditar.Edat + "";
+            LaPersona.Actiu = laPersonaAEditar.Actiu;
+            LaPersona.ImageURL = laPersonaAEditar.ImageURL;
+            
         }
 
         private void LaPersona_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            //------------------------------------------
-            Color colorNom = Colors.White;
-            this.MsgErrorNom = "";
-            if (!Persona.ValidaNom(LaPersona.Nom))
-            {
-                this.MsgErrorNom = "Nom massa curt.";
-                colorNom = Colors.OrangeRed;
-            }
-            this.BckNom = new SolidColorBrush(colorNom);
-            //------------------------------------------
-            Color colorEdat = Colors.White;
-            this.MsgErrorEdat = "";
-            if (!Persona.ValidaEdat(LaPersona.Edat))
-            {
-                this.MsgErrorEdat = "Edat incorrecta.";
-                colorEdat = Colors.OrangeRed;
-            }
-            this.BckEdat = new SolidColorBrush(colorEdat);
-            //------------------------------------------
-
-            //Persona.ValidaEdat(LaPersona.Edat);
+        { 
 
 
+            HiHaCanvis = true;
+        //------------------------------------------
+        /* Color colorNom = Colors.White;
+         this.MsgErrorNom = "";
+         if (!Persona.ValidaNom(LaPersona.Nom))
+         {
+             this.MsgErrorNom = "Nom massa curt.";
+             colorNom = Colors.OrangeRed;
+         }
+         this.BckNom = new SolidColorBrush(colorNom);
+         //------------------------------------------
+         Color colorEdat = Colors.White;
+         this.MsgErrorEdat = "";
+         if (!Persona.ValidaEdat(LaPersona.Edat))
+         {
+             this.MsgErrorEdat = "Edat incorrecta.";
+             colorEdat = Colors.OrangeRed;
+         }
+         this.BckEdat = new SolidColorBrush(colorEdat);
+         //------------------------------------------
+        */
+        //Persona.ValidaEdat(LaPersona.Edat);
+    }
 
 
-        }
+        public bool HiHaCanvis { get; set; }
+
 
         public void Desar(object sender, RoutedEventArgs e)
         {
@@ -81,21 +94,16 @@ namespace ExempleMVVM.ViewModel
                 laPersonaAEditar.Actiu = LaPersona.Actiu;
                 laPersonaAEditar.ImageURL = LaPersona.ImageURL;
             }
+            HiHaCanvis = false;
         }
         public void Cancel(object sender, RoutedEventArgs e)
         {
-
+            carregarPersona(laPersonaAEditar);
+            HiHaCanvis = false;
         }
 
+        
 
-        public String MsgErrorNom { get; set; }
-
-        public SolidColorBrush BckNom { get; set; }
-
-
-        public String MsgErrorEdat { get; set; }
-
-        public SolidColorBrush BckEdat { get; set; }
 
 
     }
