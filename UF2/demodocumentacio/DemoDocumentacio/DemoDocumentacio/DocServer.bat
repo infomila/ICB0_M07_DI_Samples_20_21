@@ -1,0 +1,1 @@
+C:\Users\Usuari\.nuget\packages\docfx.console\2.58.9\tools\docfx.exe docfx.json --serve

@@ -165,7 +165,12 @@ namespace _20211125_DemoSqlite
         {
             move(GetTotalPagines() -1);
         }
-
+        /// <summary>Moves the specified number pagina.</summary>
+        /// <param name="numPagina">The number pagina.</param>
+        /// <example>
+        ///   <code>int i=0;
+        /// i++;</code>
+        /// </example>
         private void move(int numPagina)
         {
             this.numPaginaActual = numPagina;

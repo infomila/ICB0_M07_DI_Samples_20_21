@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="kjsdhfjhs djfhlksjdhflajsh dklfhlkadshfa">
+    <Position X="7.729" Y="4.117" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="DemoDocumentacio.Model.Factura">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAA=</HashCode>
+      <FileName>Model\Factura.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Propietari" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DemoDocumentacio.Model.Persona">
+    <Position X="5" Y="1" Width="1.5" />
+    <AssociationLine Name="Cap" Type="DemoDocumentacio.Model.Persona" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="3.25" />
+        <Point X="4.625" Y="3.25" />
+        <Point X="4.625" Y="5.145" />
+        <Point X="5.047" Y="5.145" />
+        <Point X="5.047" Y="4.614" />
+        <Point X="5.125" Y="4.614" />
+        <Point X="5.125" Y="4.353" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gAACBAAAAAQAAAAAAAQAIAAAACAAAAAAAAAAABAAAgI=</HashCode>
+      <FileName>Model\Persona.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cap" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DemoDocumentacio.Model.Empleat">
+    <Position X="5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Empleat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

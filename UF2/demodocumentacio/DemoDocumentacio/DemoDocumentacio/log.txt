@@ -1,0 +1,1 @@
+{"message":"Source file 'E:\\Docencia\\Material_Moduls\\M7_DI\\repoGit\\ICB0_M07_DI_Samples_21_22\\UF2\\demodocumentacio\\DemoDocumentacio\\DemoDocumentacio\\Model\\.\\Model\\Persona.cs' not found.","source":"MetadataCommand.ExtractMetadata","date_time":"2022-01-10T20:03:13.1050804Z","message_severity":"warning","correlation_id":"97005A57-FEAA-4B82-9D2E-824DDE3EDA45.1.1.8"}
