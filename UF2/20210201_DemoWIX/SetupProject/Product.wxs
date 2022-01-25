@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="SuperDuperProgram" 
+			 Language="1033" 
+			 Version="1.0.0.0" Manufacturer="Mila i fontanals" 
+			 UpgradeCode="209942be-5cd8-40c1-9768-5f5637477542">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="FEAT_PROGRAMA" Title="SuperDuper App" Level="1">
+			<ComponentGroupRef Id="CGR_PROGRAMA" />
+			<ComponentGroupRef Id="CPG_SHORCUTS"/>
+		</Feature>
+		<Feature Id="FEAT_DOCUMENTACIO" Title="Documentacio" Level="2">
+			<ComponentGroupRef Id="CGR_DOCUMENTACIO"/>
+		</Feature>
+
+		<Property Id="WIXUI_INSTALLDIR"
+		Value="INSTALLDIR"></Property>
+		
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
+				  Value="Engegar aplicació immediatament."></Property>
+		
+		<Property Id="WixShellExecTarget"
+				  Value="[INSTALLFOLDER]20210118_DemoDocumentacio.exe"></Property>
+		
+		<CustomAction Id="LaunchApplication"
+					  BinaryKey="WixCA"
+					  DllEntry="WixShellExec"
+		Impersonate="yes"></CustomAction>
+		<WixVariable Id="WixUILicenseRtf" Value="customUI\llicencia.rtf" />
+		<WixVariable Id="WixUIBannerBmp" Value="customUI\banner.bmp" />
+
+
+		<UI>
+			<!-- Activem la interfície gràfica -->
+			<UIRef Id="WixUI_Mondo"/>
+			<UIRef Id="WixUI_ErrorProgressText"/>
+			<Publish Dialog="ExitDialog"
+					 Control="Finish"
+					 Event="DoAction"
+					 Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+		</UI>
+	
+	<Binary Id="CustomActionDLL"
+			SourceFile="$(var.CustomActionProject.TargetDir)CustomActionProject.CA.dll">
+		</Binary>
+		
+	<CustomAction Id="CA_obrir_app"
+				  BinaryKey="CustomActionDLL"
+				  DllEntry="CAOpcions"
+				  Execute="deferred"
+				  Return="check"></CustomAction>
+	
+		<InstallExecuteSequence>
+			<Custom Action="CA_obrir_app"
+					After="InstallFiles"></Custom>
+		</InstallExecuteSequence>
+	
+		<Icon Id="ICO_EXE" SourceFile="$(var.20210118_DemoDocumentacio.TargetDir)20210118_DemoDocumentacio.exe"/>
+	</Product>
+
+	<Fragment>
+		<!-- File system de la màquina on instal·lem -->
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<!-- Archivos de programa -->
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="SuperDuperApp" >
+					<Directory Id="DIR_DOC" Name="Documentacio"></Directory>
+				</Directory>
+			</Directory>
+			
+			<!-- Directory program menu folder  -->
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="DIR_PMF_SUPERDUPERAPP" Name="SuperDuperApp"></Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="CGR_PROGRAMA" Directory="INSTALLFOLDER">
+			<Component Id="CMP_exe" Guid="{172d6875-01ba-4937-93d6-47a5e338491f}">
+				<File Id="FILE_executable" 
+					  Source="$(var.20210118_DemoDocumentacio.TargetDir)/20210118_DemoDocumentacio.exe"></File>
+			</Component>
+		<Component Id="CMP_dll" Guid="{9514b126-75aa-4ecf-aff6-1af3a8b06ac2}">
+			<File Id="FILE_dll"
+				Assembly=".net"
+				  KeyPath="yes"
+				  Source="$(var.UtilitatsLib.TargetDir)/UtilitatsLib.dll"></File>
+		</Component>
+		</ComponentGroup>
+		<!-- *********************************** -->
+		<!--ComponentGroup Id="CGR_DOCUMENTACIO" Directory="DIR_DOC">
+			<Component Id="CMP_how_to_setup_md"
+					   Guid="{04957d0f-2ec6-4f9e-b0f5-1ee676f02318}">
+				<File Id="FILE_how_to_setup_md" 
+					  Source="$(var.20210118_DemoDocumentacio.ProjectDir)/articles/how_to_setup.md"></File>
+			</Component>
+		</ComponentGroup-->
+
+		<ComponentGroup Id="CPG_SHORCUTS"
+		Directory="DIR_PMF_SUPERDUPERAPP">
+			<Component Id="CMP_SHORCUTS"
+				Guid="{ef3b0a39-7c79-48d9-b2cb-dd2a34f6b841}">
+				<!-- Accés directe a l'executable -->
+				<Shortcut Id="SHR_EXE"
+						 Name="SuperDuperApp"
+						 Description="Run me!!!!"
+						 Target="[INSTALLFOLDER]20210118_DemoDocumentacio.exe"
+						 Icon="ICO_EXE"></Shortcut>
+				<!-- Accés directe al desinstal·lador -->
+				<Shortcut Id="UninstallShortcut"
+						  Name="Uninstall"
+						  Description="Desinstal·la la App"
+						  Target="[System64Folder]msiexec.exe"
+						  Arguments="/x [ProductCode]"
+						  ></Shortcut>
+
+				<RemoveFolder Id="DIR_PMF_SUPERDUPERAPP" On="uninstall"/>
+				
+				<!-- Deixar la marca al registre -->
+				<RegistryValue Root="HKCU"
+							   Key="Software\IesMila\SuperDuperApp"
+							   Name="installed"
+							   Type="integer"
+							   Value="1"
+							   KeyPath="yes"></RegistryValue>
+				
+			</Component>
+			
+		</ComponentGroup>
+		
+		
+		
+	</Fragment>
+</Wix>

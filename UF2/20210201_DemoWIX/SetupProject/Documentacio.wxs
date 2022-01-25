@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="DIR_DOC">
+            <Component Id="cmp5DE62E0177F12972ADEA84836F928DCA" Guid="{E93A8E73-AC6B-4DF9-8199-5B1D75D9F788}">
+                <File Id="fil5368AEF170EB2095FC1196F36930ACA8" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio.html" />
+            </Component>
+            <Directory Id="dirCB168F3138FC8D3D924E941D1E5A188B" Name="Documentacio_files">
+                <Component Id="cmpE77240E9BCA1979E3A472DB482356DA4" Guid="{1D10E738-421C-46E8-8CED-A1FB03E83E7B}">
+                    <File Id="filCFD2A03A8ABE96C212957608C8C0E20E" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\analytics.js.baixa" />
+                </Component>
+                <Component Id="cmp4B2E8245C1FE1DCABCC646B0803F31B6" Guid="{826263F5-6C99-4C94-8200-B3C1C1F3093C}">
+                    <File Id="filA0E3FEE2A83BB9322BDA1C61F2796CDD" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\bootstrap.css" />
+                </Component>
+                <Component Id="cmp39420BCADF5231D2450CDC506177F18C" Guid="{B700F11A-F0EB-4B61-8AB7-CFFDA863DA29}">
+                    <File Id="fil4D52283A876F53F4F942BBFB16CCAF4D" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\bootstrap.js.baixa" />
+                </Component>
+                <Component Id="cmpA5BBBF2E48B0C7F3B380302534F4E22A" Guid="{5E476784-1CE6-4450-BF02-8D9E95407E98}">
+                    <File Id="fil82B4F76B1434BD95134260A226E903C2" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\css" />
+                </Component>
+                <Component Id="cmp948165BE99B3841ED494695B8E248D66" Guid="{9665E227-4E11-4630-AB2E-D3571FC96BAD}">
+                    <File Id="filEE57042B48B753429BE5160A16DBEA9F" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\dotnetfoundation.png" />
+                </Component>
+                <Component Id="cmp45316FDD9FBE1C701D97C8C4A53C5EF8" Guid="{D7869F04-7BD9-4FB9-9872-369F39771492}">
+                    <File Id="fil9580F785FE53320BF0B4B5634D9F8499" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\easy-responsive-tabs.css" />
+                </Component>
+                <Component Id="cmp0092D748C19D19630C6F2AE4B3360D87" Guid="{609DA72F-9E55-4BC8-8049-230275545CA3}">
+                    <File Id="filDFF4341BB43180BBCC02EE3EA6A820B5" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\easyResponsiveTabs.js.baixa" />
+                </Component>
+                <Component Id="cmpBA2784D297C8B72EE91273EEDBDFA757" Guid="{DE06F172-D0E2-439B-B49E-8C5B24613603}">
+                    <File Id="fil74FC54CC7F01077D6926E334C9F6E675" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\fastclick.js.baixa" />
+                </Component>
+                <Component Id="cmp34B8EE4544DAB951049EA588EBBA5516" Guid="{5E79B969-2876-42BD-8D03-DD047C2C3E46}">
+                    <File Id="fil29B554EDE2008DB2503E475596FC7960" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\firegiant.png" />
+                </Component>
+                <Component Id="cmp1F9B845786CD408FBB7AFD0C33763DFA" Guid="{0DCB4F73-4FD2-45B4-81EC-B033FEA30F50}">
+                    <File Id="filBBC7A8A75A78FA5B6D96E856135E57C9" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\hoverIntent.js.baixa" />
+                </Component>
+                <Component Id="cmpD67B2FAE66E06266DB5808ABAF62B735" Guid="{BE320F8A-EEAA-40DA-83CA-77350A6A081B}">
+                    <File Id="filD1EB01B4CA9A482735D70FBF8A9910F5" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\jquery-1.10.2.min.js.baixa" />
+                </Component>
+                <Component Id="cmp5FED688D8FB8CA0DD64E75DC6701A399" Guid="{EB0AB5C0-6614-4722-B99B-8274C6CC1ED8}">
+                    <File Id="fil41CAC286F2C88084909F40539B820357" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\jquery.easing.1.3.js.baixa" />
+                </Component>
+                <Component Id="cmp98D668E17C9A86CE92743D30D111DD89" Guid="{E67AD8CD-BC8D-4923-AA01-8496EE1C1715}">
+                    <File Id="filF4259D1B5B080F1C09715FE9E019CA8B" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\jquery.magnific-popup.min.js.baixa" />
+                </Component>
+                <Component Id="cmpF360DBBDD58365F600C563C305CBBE0E" Guid="{827AFE5E-6605-4C0B-AFCC-66D00A7CB118}">
+                    <File Id="fil0A336E8D6BB182DC8A7C8A395E3E02B1" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\magnific-popup.css" />
+                </Component>
+                <Component Id="cmp15DA79B2C8223C2D92DBE249AF68EC3A" Guid="{F7689CC9-139E-44C9-B481-A71D9A050E19}">
+                    <File Id="fil1BE40058B1575140BA47D95DEC55CD9F" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\main.js.baixa" />
+                </Component>
+                <Component Id="cmpF00DDBDECF3E0C3B3B9BD1D6D00BCE45" Guid="{2A6CE1E4-64E4-4D35-A085-DBF658070930}">
+                    <File Id="fil5ABECF7BCFBF2F4B6D64DFB11DA45D37" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\owl.carousel.min.css" />
+                </Component>
+                <Component Id="cmp89C1BCAD1AEF94F49C4D615EC21310E1" Guid="{FCDBDFF5-94B0-414A-B7A7-9901A22BCFCA}">
+                    <File Id="fil21B871E818B9FDCCAC2B1360276C6E46" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\owl.carousel.min.js.baixa" />
+                </Component>
+                <Component Id="cmp728B3E0E9128E8525A0A08E7740C8966" Guid="{24FC566C-705A-4E59-98E6-299B0B33B6DF}">
+                    <File Id="fil0BA9CC271BA097E534B1F281F04FD510" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\owl.theme.default.min.css" />
+                </Component>
+                <Component Id="cmp38D2E6E08722CCC4ECA438AA100E698C" Guid="{440736F6-FC24-4823-914B-61955B46DFBB}">
+                    <File Id="filCB19D56691295212F722A2B283B0E8AD" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\style.css" />
+                </Component>
+                <Component Id="cmpA5B0897969876BF30DA6F1EA1FBF0934" Guid="{ED631BFE-FA87-4303-81CD-0501290738F4}">
+                    <File Id="filBE8287CBB8995CD9C63A00CF6E493E9F" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\superfish.css" />
+                </Component>
+                <Component Id="cmpD2A4B635080433BEED91F204EFD149AE" Guid="{6BCBCA87-4112-4ECC-96DA-B3FB614DFE0C}">
+                    <File Id="fil4EF58DB79C292BE9F6C111997E17E965" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\superfish.js.baixa" />
+                </Component>
+                <Component Id="cmp5E6A83A9D27DFF3E4102CE9C03E155E0" Guid="{FF1326B6-7976-411E-BC7A-4EDD7399B919}">
+                    <File Id="fil774F55300DAD47229DF61074C0F2AFFC" KeyPath="yes" Source="$(var.PathDocumentacio)\Documentacio_files\themify-icons.css" />
+                </Component>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="CGR_DOCUMENTACIO">
+            <ComponentRef Id="cmp5DE62E0177F12972ADEA84836F928DCA" />
+            <ComponentRef Id="cmpE77240E9BCA1979E3A472DB482356DA4" />
+            <ComponentRef Id="cmp4B2E8245C1FE1DCABCC646B0803F31B6" />
+            <ComponentRef Id="cmp39420BCADF5231D2450CDC506177F18C" />
+            <ComponentRef Id="cmpA5BBBF2E48B0C7F3B380302534F4E22A" />
+            <ComponentRef Id="cmp948165BE99B3841ED494695B8E248D66" />
+            <ComponentRef Id="cmp45316FDD9FBE1C701D97C8C4A53C5EF8" />
+            <ComponentRef Id="cmp0092D748C19D19630C6F2AE4B3360D87" />
+            <ComponentRef Id="cmpBA2784D297C8B72EE91273EEDBDFA757" />
+            <ComponentRef Id="cmp34B8EE4544DAB951049EA588EBBA5516" />
+            <ComponentRef Id="cmp1F9B845786CD408FBB7AFD0C33763DFA" />
+            <ComponentRef Id="cmpD67B2FAE66E06266DB5808ABAF62B735" />
+            <ComponentRef Id="cmp5FED688D8FB8CA0DD64E75DC6701A399" />
+            <ComponentRef Id="cmp98D668E17C9A86CE92743D30D111DD89" />
+            <ComponentRef Id="cmpF360DBBDD58365F600C563C305CBBE0E" />
+            <ComponentRef Id="cmp15DA79B2C8223C2D92DBE249AF68EC3A" />
+            <ComponentRef Id="cmpF00DDBDECF3E0C3B3B9BD1D6D00BCE45" />
+            <ComponentRef Id="cmp89C1BCAD1AEF94F49C4D615EC21310E1" />
+            <ComponentRef Id="cmp728B3E0E9128E8525A0A08E7740C8966" />
+            <ComponentRef Id="cmp38D2E6E08722CCC4ECA438AA100E698C" />
+            <ComponentRef Id="cmpA5B0897969876BF30DA6F1EA1FBF0934" />
+            <ComponentRef Id="cmpD2A4B635080433BEED91F204EFD149AE" />
+            <ComponentRef Id="cmp5E6A83A9D27DFF3E4102CE9C03E155E0" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>
