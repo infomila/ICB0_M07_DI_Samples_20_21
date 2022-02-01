@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	
+	<Product Id="*" Name="SetupProject" Language="1033" Version="1.0.0.0" Manufacturer="ies mila" UpgradeCode="c0acdcb6-d4a2-4621-9ed7-ebad1cf78dc9">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<!-- indica que els accessos directes s'instal·len per tots els usuaris -->
+ 
+		
+		<Feature Id="ProductFeature" Title="Calculadora" Level="1">
+			<ComponentGroupRef Id="CG_PRODUCT" />
+			<ComponentGroupRef Id="CG_SHORCUT_MI" />
+			<ComponentGroupRef Id="CG_SHORTCUT_DESK"/>
+		</Feature>
+		<Feature Id="DocumentationFeature" Title="Documentacio de la calculadora" Level="2">
+			<ComponentGroupRef Id="DocumentationComponents" />
+		</Feature>
+		<!-- activem la interfície gràfica -->
+		<!-- NOTA: Cal afegir abans la refèrncia a WixUIExtension.dll -->
+		<UIRef Id="WixUI_Mondo"/>
+		<UIRef Id="WixUI_ErrorProgressText"/>
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<!-- ****************************************************+ -->
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="CutreCalculadora" >
+					<Directory Id="IMAGESFOLDER" Name="Imatges"></Directory>
+					<Directory Id="DOCFOLDER" Name="Documentacio"></Directory>
+				</Directory>
+			</Directory>
+			<!-- ****************************************************+ -->
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="DIR_PMF_CALCULADORA" Name="SuperCalculadora"></Directory>
+			</Directory>
+			<!-- ****************************************************+ -->
+			<Directory Id="DesktopFolder">
+				
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<!--ComponentGroup Id="DocumentationComponents" Directory="DOCFOLDER">
+			<Component Id="CMP_DOCU" Guid="{935e6b28-82c8-11ec-a8a3-0242ac120002}">
+				<File Id="FILE_docu"
+						Source="$(var.20210118_DemoDocumentacio.ProjectDir)/docu/docu.pdf"
+					  KeyPath="yes"></File>
+			</Component>
+		</ComponentGroup-->
+		
+		<!-- grup de components de l'accés directe al menú d'inici -->
+		<ComponentGroup Id="CG_SHORCUT_MI" Directory="DIR_PMF_CALCULADORA">
+			<Component Id="CMP_SHORCUT_MI" Guid="{d3dbf062-82cd-11ec-a8a3-0242ac120002}">
+				<Shortcut Id="SHC_MI_EXE"
+						 Name="Calculadora"
+						 Description="Calculadora científica"
+						 Target="[INSTALLFOLDER]20210118_DemoDocumentacio.exe"
+						 />
+				<Shortcut Id="SHC_MI_UNINSTALL"
+					 Name="Desintalar Calculadora"
+					 Description="Desintalar Calculadora científica"
+					 Target="[System64Folder]msiexec.exe"
+						  Arguments="/x [ProductCode]"
+						 />
+				<RemoveFolder Id="RemoveMyShortcutsDir" On="uninstall"/>
+
+				<RegistryValue Root="HKCU"
+					Key="Software\IESMila\Calculadora"
+							   Name="installed"
+							   Type="integer"
+							   Value="1"
+							   KeyPath="yes"/>
+			</Component>
+		</ComponentGroup>
+
+
+
+		<ComponentGroup Id="CG_SHORTCUT_DESK" Directory="DesktopFolder">
+			<Component Id="CMP_SHORCUT_DESK" Guid="{8e595987-a58e-47b7-a325-bf5734069cb3}">
+				<Shortcut Id="SHC_DESK_EXE"
+						 Name="Calculadora"
+						 Description="Calculadora científica"
+						 Target="[INSTALLFOLDER]20210118_DemoDocumentacio.exe"
+						 />
+			
+				<RegistryValue Root="HKCU"
+					Key="Software\IESMila\Calculadora"
+							   Name="installedDesktop"
+							   Type="integer"
+							   Value="1"
+							   KeyPath="yes"/>
+			</Component>
+			
+		</ComponentGroup>
+		
+		
+		<ComponentGroup Id="CG_PRODUCT" Directory="INSTALLFOLDER">
+			<Component Id="CMP_EXECUTABLE" Guid="{b53bbfe9-5fd6-4070-9d25-6b27b3991c5d}">
+				<File Id="FILE_20210118_DemoDocumentacio_exe" 
+					  Source="$(var.20210118_DemoDocumentacio.TargetDir)20210118_DemoDocumentacio.exe"
+					  KeyPath="yes"></File>
+			</Component>
+			<Component Id="CMP_LLIBRERIA" Guid="{b4e92e7e-82c6-11ec-a8a3-0242ac120002}">
+				<File Id="FILE_UtilitatsLib_dll"
+					  Assembly=".net"
+					  Source="$(var.20210118_DemoDocumentacio.TargetDir)UtilitatsLib.dll"
+					  KeyPath="yes"></File>
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
