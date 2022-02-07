@@ -20,9 +20,52 @@
 		</Feature>
 		<!-- activem la interfície gràfica -->
 		<!-- NOTA: Cal afegir abans la refèrncia a WixUIExtension.dll -->
-		<UIRef Id="WixUI_Mondo"/>
-		<UIRef Id="WixUI_ErrorProgressText"/>
+		<UI>
+		
+			<UIRef Id="WixUI_Mondo"/>
+			<UIRef Id="WixUI_ErrorProgressText"/>
+			<Publish Dialog="ExitDialog"
+					 Control="Finish"
+					 Event="DoAction"
+					 Value="LaunchApplication">
+				WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
+			</Publish>
+		</UI>
+		
 		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
+		<!-- Customitzacions de la interfície -->
+		<WixVariable Id="WixUILicenseRtf" Value="llicencia.rtf"/>
+		<WixVariable Id="WixUIBannerBmp"
+					 Value="banner.bmp"
+					 ></WixVariable>
+		
+		<!-- ============================= CUSTOM ACTIONS =======================================-->
+		<!-- ============================= CUSTOM ACTION 1: Engegar aplicació ===================-->
+		<!-- mostrar checkbox "d'engegar ara ?"-->
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
+				  Value="Vols engegar l'aplicació ara?"></Property>
+
+		<Property Id="WixShellExecTarget"
+				  Value="[INSTALLFOLDER]20210118_DemoDocumentacio.exe"></Property>
+		<CustomAction Id="LaunchApplication" BinaryKey="WixCA"
+					  DllEntry="WixShellExec"
+					  Impersonate="yes"></CustomAction>
+		<!-- ============================= CUSTOM ACTION 2: Engegar UI personalitzada ===========-->
+
+		<Binary Id="BIN_CUSTOM_ACTION"
+				SourceFile="$(var.CustomActionInstalador.TargetDir)CustomActionInstalador.CA.dll"
+		></Binary>
+		<CustomAction
+			Id="CA_CUSTOM_ACTION"
+			BinaryKey="BIN_CUSTOM_ACTION"
+			DllEntry="MostraDialegConfiguracio"
+			Execute="deferred"
+			Return="check"
+					></CustomAction>
+		<InstallExecuteSequence>
+			<Custom Action="CA_CUSTOM_ACTION"
+					After="InstallInitialize"></Custom>
+		</InstallExecuteSequence>
 	</Product>
 
 	<Fragment>
@@ -98,8 +141,7 @@
 			</Component>
 			
 		</ComponentGroup>
-		
-		
+				
 		<ComponentGroup Id="CG_PRODUCT" Directory="INSTALLFOLDER">
 			<Component Id="CMP_EXECUTABLE" Guid="{b53bbfe9-5fd6-4070-9d25-6b27b3991c5d}">
 				<File Id="FILE_20210118_DemoDocumentacio_exe" 
@@ -109,7 +151,7 @@
 			<Component Id="CMP_LLIBRERIA" Guid="{b4e92e7e-82c6-11ec-a8a3-0242ac120002}">
 				<File Id="FILE_UtilitatsLib_dll"
 					  Assembly=".net"
-					  Source="$(var.20210118_DemoDocumentacio.TargetDir)UtilitatsLib.dll"
+					  Source="$(var.20210118_DemoDocumentacio.TargetDir)UtilitatsLib2022.dll"
 					  KeyPath="yes"></File>
 			</Component>
 		</ComponentGroup>

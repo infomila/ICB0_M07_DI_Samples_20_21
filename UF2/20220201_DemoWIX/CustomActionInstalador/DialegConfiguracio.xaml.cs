@@ -13,22 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomActionProject
+namespace CustomActionInstalador
 {
     /// <summary>
-    /// Lógica de interacción para Dialeg.xaml
+    /// Lógica de interacción para DialegConfiguracio.xaml
     /// </summary>
-    public partial class Dialeg : Window
+    public partial class DialegConfiguracio : Window
     {
-        public Dialeg()
+        public DialegConfiguracio()
         {
             InitializeComponent();
         }
 
 
-        public void onClick(object sender, EventArgs e)
+        private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            DialogResult = true;
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
         }
     }
 }
